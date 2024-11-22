@@ -13,22 +13,22 @@ Class {
 
 { #category : 'comparing' }
 TTAnswer >> = anotherAnswer [
-	^ (self label) = (anotherAnswer label).
+	^ (self response) = (anotherAnswer response).
 ]
 
 { #category : 'comparing' }
 TTAnswer >> hash [
-	^ self label hash
+	^ self response hash
 ]
 
 { #category : 'accessing' }
-TTAnswer >> label [
+TTAnswer >> response [
 
 	^ label
 ]
 
 { #category : 'accessing' }
-TTAnswer >> label: anObject [
+TTAnswer >> response: anObject [
 
 	label := anObject
 ]

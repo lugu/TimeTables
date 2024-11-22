@@ -6,10 +6,11 @@ Once I have received a correct response with `response:` my `success` value is `
 Class {
 	#name : 'TTMultiplication',
 	#superclass : 'Object',
+	#traits : 'TTTQuestion',
+	#classTraits : 'TTTQuestion classTrait',
 	#instVars : [
 		'x',
-		'y',
-		'success'
+		'y'
 	],
 	#category : 'TimeTables',
 	#package : 'TimeTables'
@@ -24,7 +25,7 @@ TTMultiplication >> answers [
 { #category : 'answers' }
 TTMultiplication >> correctAnswer [
 	"I return a TTAnswer with x * y"
-	^ TTAnswer new label: (self label)
+	^ TTAnswer new response: (self problemStatement)
 ]
 
 { #category : 'answers' }
@@ -33,16 +34,11 @@ TTMultiplication >> incorrectAnswer [
 	| noise answer |
 	noise := 3 timesCollect: [ (-1 to: 1) atRandom].
 	answer := (x + noise at: 1) * ( y + noise at: 2) + noise at:3.
-	^ (answer = (x * y)) ifTrue: [self incorrectAnswer.] ifFalse: [ TTAnswer new label: answer asString ].
-]
-
-{ #category : 'initialization' }
-TTMultiplication >> initialize [
-	success := false
+	^ (answer = (x * y)) ifTrue: [self incorrectAnswer.] ifFalse: [ TTAnswer new response: answer asString ].
 ]
 
 { #category : 'accessing' }
-TTMultiplication >> label [
+TTMultiplication >> problemStatement [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"
 	^ (x * y) asString
@@ -50,14 +46,7 @@ TTMultiplication >> label [
 
 { #category : 'answers' }
 TTMultiplication >> response: anAnswer [
-	success := self correctAnswer = anAnswer.
-	^ success
-]
-
-{ #category : 'accessing' }
-TTMultiplication >> success [
-
-	^ success
+	^ self correctAnswer = anAnswer
 ]
 
 { #category : 'accessing' }

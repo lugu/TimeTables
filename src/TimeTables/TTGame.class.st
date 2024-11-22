@@ -6,7 +6,7 @@ Class {
 	#name : 'TTGame',
 	#superclass : 'Object',
 	#instVars : [
-		'multiplications'
+		'questions'
 	],
 	#category : 'TimeTables',
 	#package : 'TimeTables'
@@ -14,22 +14,37 @@ Class {
 
 { #category : 'initialization' }
 TTGame class >> tableOf: aNumber [
-	^ self new multiplications: (TTTable ofNumber: aNumber) multiplications shuffle.
+	^ self new questions: (TTTable ofNumber: aNumber) questions shuffle.
+]
+
+{ #category : 'initialization' }
+TTGame >> initialize [
+	questions := Dictionary new
 ]
 
 { #category : 'testing' }
 TTGame >> isFinished [
-	^ self multiplications allSatisfy: [ :m | m success ].
+   "I return true if all questions have been correctly answerred."
+	^ (questions reject: [ :success | success ]) isEmpty
 ]
 
 { #category : 'accessing' }
-TTGame >> multiplications [
+TTGame >> openQuestions [
 
-	^ multiplications
+	^ (questions reject: [ :success | success ]) keys
 ]
 
 { #category : 'accessing' }
-TTGame >> multiplications: anObject [
+TTGame >> questions [
+	^ questions keys
+]
 
-	multiplications := anObject
+{ #category : 'accessing' }
+TTGame >> questions: someQuestions [
+   someQuestions do: [ :q | questions at: q put: false ]
+]
+
+{ #category : 'accessing' }
+TTGame >> respondTo: aQuestion with: anAnswer [
+	questions at: aQuestion put: (aQuestion response: anAnswer)
 ]

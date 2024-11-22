@@ -21,11 +21,11 @@ TTTable class >> ofNumber: aNumber [
 TTTable class >> table: aNumber [
 	"comment stating purpose of class-side method"
 	"scope: class-variables  &  class-instance-variables"
-   ^ self new multiplications: ((self new x: aNumber) multiplications)
+   ^ self new questions: ((self new x: aNumber) questions)
 ]
 
 { #category : 'accessing' }
-TTTable >> multiplications [
+TTTable >> questions [
 	"I return all the multiplications in the table"
    ^ 10 timesCollect: [ :number | TTMultiplication new x: x; y: number ]
 
