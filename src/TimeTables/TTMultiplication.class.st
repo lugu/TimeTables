@@ -18,14 +18,16 @@ Class {
 
 { #category : 'answers' }
 TTMultiplication >> answers [
-	"I return 3 TTAnswer different from x * y"
-	^ { self correctAnswer. self incorrectAnswer. self incorrectAnswer } shuffle
+	"I return some TTAnswer different from x * y"
+	| incorrectAnswers |
+	incorrectAnswers := (TTGame numberOfAnswers - 1) timesCollect: [ self incorrectAnswer ].
+	^ (incorrectAnswers copyWith: self correctAnswer) shuffle
 ]
 
 { #category : 'answers' }
 TTMultiplication >> correctAnswer [
 	"I return a TTAnswer with x * y"
-	^ TTAnswer new response: (self problemStatement)
+	^ TTAnswer new response: (x * y) asString
 ]
 
 { #category : 'answers' }
@@ -39,9 +41,7 @@ TTMultiplication >> incorrectAnswer [
 
 { #category : 'accessing' }
 TTMultiplication >> problemStatement [
-	"comment stating purpose of instance-side method"
-	"scope: class-variables  &  instance-variables"
-	^ (x * y) asString
+	^ 'How much is: ', x asString, '*', y asString
 ]
 
 { #category : 'answers' }

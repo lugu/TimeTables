@@ -13,6 +13,11 @@ Class {
 }
 
 { #category : 'initialization' }
+TTGame class >> numberOfAnswers [
+	^ 3
+]
+
+{ #category : 'initialization' }
 TTGame class >> tableOf: aNumber [
 	^ self new questions: (TTTable ofNumber: aNumber) questions shuffle.
 ]
