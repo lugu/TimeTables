@@ -20,7 +20,7 @@ TTMultiplicationPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 TTMultiplicationPresenter >> initializePresenter [
 	question := self newLabel.
 	grid := self instantiate: SpBlSpaceInMorphPresenter.
@@ -35,11 +35,17 @@ TTMultiplicationPresenter >> initializeWindow: aWindowPresenter [
 ]
 
 { #category : 'initialization - deprecated' }
+TTMultiplicationPresenter >> resetGrid: aMultiplication [
+	self layout remove: grid.
+	grid := self instantiate: SpBlSpaceInMorphPresenter.
+	self setGrid: aMultiplication.
+	self layout add: grid.
+]
+
+{ #category : 'initialization - deprecated' }
 TTMultiplicationPresenter >> setGrid: aMultiplication [
 
 	| space size childElements parentElement diameter color |
-	self layout remove: grid.
-	grid := self instantiate: SpBlSpaceInMorphPresenter.
 	space := grid space.
 	space root removeChildren.
 	space clearDirtyElements.
@@ -60,14 +66,11 @@ TTMultiplicationPresenter >> setGrid: aMultiplication [
 	
 	space root addChild: parentElement;
 		background: Color transparent.
-	space root size: size.
-	space extent: size.
-	self layout add: grid.
 ]
 
 { #category : 'initialization - deprecated' }
 TTMultiplicationPresenter >> setModel: aMultiplication [
 	question label: aMultiplication problemStatement.
-	self setGrid: aMultiplication.
+	self resetGrid: aMultiplication.
 	super setModel: aMultiplication
 ]
