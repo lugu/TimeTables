@@ -13,7 +13,7 @@ TTAnswerPresenterTest >> testAnswerConnection [
 	question := game questions first.
 	answer := question correctAnswer.
 	ap setModel: answer.
-	ap onSelect: [ game respondTo: question with: answer ].
+	ap onResponse: [ :anAnswer | game respondTo: question with: anAnswer ].
 	ap button click.
 	self assert: game openQuestions size equals: 9.
 ]

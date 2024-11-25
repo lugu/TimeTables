@@ -11,7 +11,7 @@ Class {
 	#package : 'TimeTables-UI'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 TTAnswerPresenter >> button [
 	^ answer
 ]
@@ -19,7 +19,7 @@ TTAnswerPresenter >> button [
 { #category : 'layout' }
 TTAnswerPresenter >> defaultLayout [
 	^ SpBoxLayout newLeftToRight
-		add: answer expand: false;
+		add: answer;
 		yourself
 ]
 
@@ -33,17 +33,12 @@ TTAnswerPresenter >> initializeWindow: aWindowPresenter [
 	aWindowPresenter title: 'Answer'.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 TTAnswerPresenter >> onResponse: aBlockAcceptingAnAnswer [
 	answer action: [ aBlockAcceptingAnAnswer value: self model ].
 ]
 
-{ #category : 'as yet unclassified' }
-TTAnswerPresenter >> onSelect: aBlock [
-	answer action: aBlock
-]
-
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 TTAnswerPresenter >> setModel: anAnswer [
 	answer label: anAnswer response.
 	super setModel: anAnswer.

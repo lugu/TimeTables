@@ -41,7 +41,7 @@ TTMultiplication >> incorrectAnswer [
 
 { #category : 'accessing' }
 TTMultiplication >> problemStatement [
-	^ 'How much is: ', x asString, '*', y asString
+	^ 'How much is ', x asString, ' x ', y asString, ' ?'
 ]
 
 { #category : 'answers' }

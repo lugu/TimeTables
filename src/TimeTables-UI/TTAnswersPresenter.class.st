@@ -15,7 +15,7 @@ Class {
 TTAnswersPresenter >> defaultLayout [
 	| spLayout |
 	spLayout := SpBoxLayout newLeftToRight.
-	answers do: [ :a | spLayout add: a expand: false ].
+	answers do: [ :a | spLayout add: a ].
 	^ spLayout
 ]
 
@@ -37,7 +37,7 @@ TTAnswersPresenter >> onResponse: aBlockAcceptingAnAnswer [
 	answers do: [ :answer | answer onResponse: aBlockAcceptingAnAnswer ].
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 TTAnswersPresenter >> setAnswers: someAnswers [
 	1 to: someAnswers size do: [:index |
 		(answers at: index) setModel: (someAnswers at: index)

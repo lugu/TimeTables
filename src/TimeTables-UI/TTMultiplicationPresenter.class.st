@@ -6,7 +6,7 @@ Class {
 	#superclass : 'SpPresenterWithModel',
 	#instVars : [
 		'question',
-		'grid'
+		'visual'
 	],
 	#category : 'TimeTables-UI',
 	#package : 'TimeTables-UI'
@@ -16,16 +16,16 @@ Class {
 TTMultiplicationPresenter >> defaultLayout [
 	^ SpBoxLayout newTopToBottom
 		add: question expand: false;
-		add: grid;
+		add: visual;
 		yourself
 ]
 
-{ #category : 'initialization' }
+{ #category : 'initialization - deprecated' }
 TTMultiplicationPresenter >> initializePresenter [
 	question := self newLabel.
-	grid := self instantiate: SpBlSpaceInMorphPresenter.
+	visual := self instantiate: TTMultiplicationVisualPresenter.
 	self focusOrder
-		add: grid;
+		add: visual;
 		add: question.
 ]
 
@@ -35,42 +35,8 @@ TTMultiplicationPresenter >> initializeWindow: aWindowPresenter [
 ]
 
 { #category : 'initialization - deprecated' }
-TTMultiplicationPresenter >> resetGrid: aMultiplication [
-	self layout remove: grid.
-	grid := self instantiate: SpBlSpaceInMorphPresenter.
-	self setGrid: aMultiplication.
-	self layout add: grid.
-]
-
-{ #category : 'initialization - deprecated' }
-TTMultiplicationPresenter >> setGrid: aMultiplication [
-
-	| space size childElements parentElement diameter color |
-	space := grid space.
-	space root removeChildren.
-	space clearDirtyElements.
-	color := Color random.
-	diameter := 30.
-	size := (aMultiplication y * diameter) @  (aMultiplication x * diameter).
-	childElements := aMultiplication x * aMultiplication y timesCollect: [ 
-		BlElement new
-		geometry: BlCircleGeometry new;
-		background: color;
-		size: diameter @ diameter
-	].
-	parentElement := BlElement new
-		background: Color transparent;
-		layout: BlFlowLayout new;
-		addChildren: childElements;
-		size: size.
-	
-	space root addChild: parentElement;
-		background: Color transparent.
-]
-
-{ #category : 'initialization - deprecated' }
 TTMultiplicationPresenter >> setModel: aMultiplication [
 	question label: aMultiplication problemStatement.
-	self resetGrid: aMultiplication.
+	visual x: aMultiplication x y: aMultiplication y.
 	super setModel: aMultiplication
 ]
