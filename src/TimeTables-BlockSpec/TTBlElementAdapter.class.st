@@ -15,6 +15,11 @@ TTBlElementAdapter >> buildWidget [
 ]
 
 { #category : 'factory' }
+TTBlElementAdapter >> element [
+	^ widget children at: 1 ifAbsent: [ nil ]
+]
+
+{ #category : 'factory' }
 TTBlElementAdapter >> updateAll [
 
 	super updateAll.
