@@ -1,5 +1,5 @@
 Class {
-	#name : 'TTSpBlElementAdapter',
+	#name : 'TTBlElementAdapter',
 	#superclass : 'SpToploWidgetAdapter',
 	#traits : 'SpToploTWithContextMenu',
 	#classTraits : 'SpToploTWithContextMenu classTrait',
@@ -9,25 +9,20 @@ Class {
 }
 
 { #category : 'factory' }
-TTSpBlElementAdapter >> buildWidget [
-
+TTBlElementAdapter >> buildWidget [
+	self presenter whenElementChangedDo: [ self updateAll ].
 	^ ToElement new
 ]
 
-{ #category : 'accessing' }
-TTSpBlElementAdapter >> element [
-	^ widget children at: 1 ifAbsent: [ nil ]
-]
-
 { #category : 'factory' }
-TTSpBlElementAdapter >> updateAll [
+TTBlElementAdapter >> updateAll [
 
 	super updateAll.
 	self updateElement
 ]
 
 { #category : 'factory' }
-TTSpBlElementAdapter >> updateElement [
+TTBlElementAdapter >> updateElement [
 	widget removeChildren.
 	model element ifNotNil: [ widget addChild: model element ]
 ]

@@ -1,3 +1,6 @@
+"
+I represent a multiplication using a serie of cercles.
+"
 Class {
 	#name : 'TTMultiplicationVisualPresenter',
 	#superclass : 'SpPresenterWithModel',
@@ -17,8 +20,8 @@ TTMultiplicationVisualPresenter >> defaultLayout [
 
 { #category : 'initialization - deprecated' }
 TTMultiplicationVisualPresenter >> initializePresenter [
-	visual := self instantiate: TTSpBlElementPresenter.
-	visual element: (self visualFor: 5 by: 10).
+	visual := self instantiate: TTBlElementPresenter.
+	visual element: (self visualFor: 10 by: 10).
 	self focusOrder
 		add: visual.
 ]

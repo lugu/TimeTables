@@ -16,5 +16,5 @@ TTElementApp >> initialize [
 
 { #category : 'running' }
 TTElementApp >> start [
-	(TTSpBlElementPresenter newApplication: self) open
+	(TTBlElementPresenter newApplication: self) open
 ]

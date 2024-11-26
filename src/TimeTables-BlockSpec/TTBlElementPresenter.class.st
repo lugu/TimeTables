@@ -1,5 +1,5 @@
 Class {
-	#name : 'TTSpBlElementPresenter',
+	#name : 'TTBlElementPresenter',
 	#superclass : 'SpAbstractWidgetPresenter',
 	#instVars : [
 		'#element => ObservableSlot'
@@ -9,21 +9,21 @@ Class {
 }
 
 { #category : 'specs' }
-TTSpBlElementPresenter class >> adapterName [
-	^ #TTSpBlElementAdapter
+TTBlElementPresenter class >> adapterName [
+	^ #TTBlElementAdapter
 ]
 
 { #category : 'api' }
-TTSpBlElementPresenter >> element [
+TTBlElementPresenter >> element [
 	^ element
 ]
 
 { #category : 'api' }
-TTSpBlElementPresenter >> element: aBlElement [
+TTBlElementPresenter >> element: aBlElement [
 	element := aBlElement
 ]
 
 { #category : 'api - events' }
-TTSpBlElementPresenter >> whenElementChangedDo: aBlockClosure [ 
+TTBlElementPresenter >> whenElementChangedDo: aBlockClosure [ 
 	self property: #element whenChangedDo: aBlockClosure 
 ]
