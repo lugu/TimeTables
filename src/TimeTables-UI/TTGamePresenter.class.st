@@ -86,7 +86,7 @@ TTGamePresenter >> nextGame [
 	self nextQuestion.
 ]
 
-{ #category : 'initialization - deprecated' }
+{ #category : 'accessing' }
 TTGamePresenter >> nextQuestion [
 	game isFinished 
 		ifTrue: [ self congratulationScreen ]

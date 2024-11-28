@@ -1,8 +1,8 @@
 Class {
 	#name : 'TTQuestionPresenterTest',
 	#superclass : 'TestCase',
-	#category : 'TimeTables-Tests',
-	#package : 'TimeTables-Tests'
+	#category : 'TimeTables-UI-Tests',
+	#package : 'TimeTables-UI-Tests'
 }
 
 { #category : 'tests' }

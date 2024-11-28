@@ -11,7 +11,7 @@ Class {
 	#package : 'TimeTables-UI'
 }
 
-{ #category : 'initialization - deprecated' }
+{ #category : 'layout' }
 TTMultiplicationVisualPresenter >> defaultLayout [
 	^ SpBoxLayout newTopToBottom
 		add: visual;
@@ -26,12 +26,12 @@ TTMultiplicationVisualPresenter >> initializePresenter [
 		add: visual.
 ]
 
-{ #category : 'initialization - deprecated' }
+{ #category : 'initialization' }
 TTMultiplicationVisualPresenter >> initializeWindow: aWindowPresenter [
 	aWindowPresenter title: 'Multiplication visualization'
 ]
 
-{ #category : 'initialization - deprecated' }
+{ #category : 'initialization' }
 TTMultiplicationVisualPresenter >> visualFor: x by: y [
 	| color diameter size childElements |
 	color := Color random.
@@ -50,7 +50,7 @@ TTMultiplicationVisualPresenter >> visualFor: x by: y [
 		size: size
 ]
 
-{ #category : 'initialization - deprecated' }
+{ #category : 'initialization' }
 TTMultiplicationVisualPresenter >> x: xNumber y: yNumber [
 	| element |
 	element := self visualFor: xNumber by: yNumber.

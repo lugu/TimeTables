@@ -20,8 +20,8 @@ TTQuestionPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : 'initialization' }
-TTQuestionPresenter >> initializePresenter [
+{ #category : 'initialization - deprecated' }
+TTQuestionPresenter >> initializePresenters [
 	question := self instantiate: TTMultiplicationPresenter.
 	answers := self instantiate: TTAnswersPresenter.
 	self focusOrder
@@ -29,7 +29,7 @@ TTQuestionPresenter >> initializePresenter [
 		add: answers.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 TTQuestionPresenter >> initializeWindow: aWindowPresenter [
 	aWindowPresenter title: 'Question'
 ]

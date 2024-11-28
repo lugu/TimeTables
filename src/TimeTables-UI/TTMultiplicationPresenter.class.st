@@ -34,7 +34,7 @@ TTMultiplicationPresenter >> initializeWindow: aWindowPresenter [
 	aWindowPresenter title: 'Multiplication question'
 ]
 
-{ #category : 'initialization - deprecated' }
+{ #category : 'transmission' }
 TTMultiplicationPresenter >> setModel: aMultiplication [
 	question label: aMultiplication problemStatement.
 	visual x: aMultiplication x y: aMultiplication y.
