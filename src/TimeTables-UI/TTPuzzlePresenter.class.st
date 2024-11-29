@@ -1,3 +1,6 @@
+"
+I represent a obstructed image that is cleared as the player succeded to answer questions.
+"
 Class {
 	#name : 'TTPuzzlePresenter',
 	#superclass : 'SpPresenterWithModel',
@@ -12,17 +15,15 @@ Class {
 
 { #category : 'accessing' }
 TTPuzzlePresenter >> background: aForm [
-	background := aForm.
+	background := BlElement new
+		background: (BlImageBackground new image: aForm).
 	background addChildren: pieces.
 	puzzle element: background.
 ]
 
 { #category : 'initialization' }
-TTPuzzlePresenter >> defaultBackground [
-	| form |
-	form := ImageReadWriter formFromStream: '/home/ludo/elephant.jpg' asFileReference binaryReadStream.
-	^ BlImageBackground new
-		image: form.
+TTPuzzlePresenter >> defaultBackgroundForm [
+	^ ImageReadWriter formFromStream: '/home/ludo/elephant.jpg' asFileReference binaryReadStream
 ]
 
 { #category : 'layout' }
@@ -33,21 +34,15 @@ TTPuzzlePresenter >> defaultLayout [
 ]
 
 { #category : 'initialization' }
-TTPuzzlePresenter >> initializePresenter [
+TTPuzzlePresenter >> initializePresenters [
 	puzzle := self instantiate: TTBlElementPresenter.
 	pieces := 10 timesCollect: [ self makePiece ].
-	self background: self defaultBackground.
+	self background: self defaultBackgroundForm.
 ]
 
 { #category : 'initialization' }
 TTPuzzlePresenter >> initializeWindow: aWindowPresenter [
 	aWindowPresenter title: 'Puzzle'
-]
-
-{ #category : 'initialization' }
-TTPuzzlePresenter >> makeBackground [
-	"delete me"
-	self halt.
 ]
 
 { #category : 'initialization' }
@@ -57,4 +52,16 @@ TTPuzzlePresenter >> makePiece [
 		size: 100@100;
 		geometry: BlRectangleGeometry new;
 		position: 100 atRandom @ 100 atRandom
+]
+
+{ #category : 'initialization' }
+TTPuzzlePresenter >> numberOfPieces [
+	^ pieces size.
+]
+
+{ #category : 'initialization' }
+TTPuzzlePresenter >> removeOnePiece [
+	pieces isEmpty ifTrue: [ ^self ].
+	background removeChild: pieces last.
+	pieces := pieces allButLast
 ]

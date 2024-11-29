@@ -8,7 +8,7 @@ Class {
 	#package : 'TimeTables-UI'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 TTGameApplication >> initialize [ 
 	super initialize.
 	self useBackend: #Toplo

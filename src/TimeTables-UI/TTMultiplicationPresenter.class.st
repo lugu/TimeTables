@@ -21,7 +21,7 @@ TTMultiplicationPresenter >> defaultLayout [
 ]
 
 { #category : 'initialization - deprecated' }
-TTMultiplicationPresenter >> initializePresenter [
+TTMultiplicationPresenter >> initializePresenters [
 	question := self newLabel.
 	visual := self instantiate: TTMultiplicationVisualPresenter.
 	self focusOrder

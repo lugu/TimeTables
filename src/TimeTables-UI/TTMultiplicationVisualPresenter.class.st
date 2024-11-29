@@ -19,7 +19,7 @@ TTMultiplicationVisualPresenter >> defaultLayout [
 ]
 
 { #category : 'initialization - deprecated' }
-TTMultiplicationVisualPresenter >> initializePresenter [
+TTMultiplicationVisualPresenter >> initializePresenters [
 	visual := self instantiate: TTBlElementPresenter.
 	visual element: (self visualFor: 10 by: 10).
 	self focusOrder

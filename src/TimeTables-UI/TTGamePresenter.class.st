@@ -62,7 +62,7 @@ TTGamePresenter >> initialize: aGame [
 ]
 
 { #category : 'initialization - deprecated' }
-TTGamePresenter >> initializePresenter [
+TTGamePresenter >> initializePresenters [
 	question := self instantiate: TTQuestionPresenter.
 	self focusOrder
 		add: question.
@@ -81,7 +81,7 @@ TTGamePresenter >> newGame [
 { #category : 'initialization' }
 TTGamePresenter >> nextGame [
 	self newGame.
-	self initializePresenter.
+	self initializePresenters.
 	self layout add: question.
 	self nextQuestion.
 ]
