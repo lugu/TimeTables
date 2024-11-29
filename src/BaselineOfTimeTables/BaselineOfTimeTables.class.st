@@ -19,7 +19,7 @@ BaselineOfTimeTables >> baseline: spec [
 			package: 'TimeTables-Tests'	with: [ spec requires: #( 'TimeTables') ];
 			package: 'TimeTables-BlocSpec' with: [ spec requires: #( 'SpecToplo') ];
 			package: 'TimeTables-BlocSpec-Tests' with: [ spec requires: #( 'TimeTables-BlocSpec') ];
-			package: 'TimeTables-UI-Tests'	with: [ spec requires: #( 'TimeTables-UI') ];
-			package: 'TimeTables-UI' with: [ spec requires: #( 'TimeTables' ) ]
+			package: 'TimeTables-UI' with: [ spec requires: #( 'TimeTables' 'TimeTables-BlocSpec') ];
+			package: 'TimeTables-UI-Tests'	with: [ spec requires: #( 'TimeTables-UI') ].
 	]
 ]
