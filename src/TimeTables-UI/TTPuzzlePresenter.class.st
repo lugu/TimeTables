@@ -24,7 +24,6 @@ TTPuzzlePresenter >> addOnePiece [
 	randomPiece := (pieces select: [ :each |
 		                each background isTransparent ]) atRandom.
 	randomPiece background: Color random.
-	self updateModel
 ]
 
 { #category : 'accessing' }
@@ -95,8 +94,7 @@ TTPuzzlePresenter >> removeOnePiece [
 		ifTrue: [ ^ self ].
 	randomPiece := (pieces reject: [ :each |
 		                each background isTransparent ]) atRandom.
-	randomPiece background: Color transparent.
-	self updateModel
+	randomPiece background: Color transparent
 ]
 
 { #category : 'accessing' }
@@ -106,7 +104,7 @@ TTPuzzlePresenter >> resetBackground [
 		layout: BlFlowLayout new;
 		size: form extent.
 	pieces ifNotNil: [ background addChildren: pieces].
-	self updateModel.
+	puzzle element: background.
 ]
 
 { #category : 'initialization' }
@@ -115,18 +113,11 @@ TTPuzzlePresenter >> resetPieces [
 			self makePiece
 	].
 	background removeChildren.
-	background addChildren: pieces.
-	self updateModel
+	background addChildren: pieces
 ]
 
 { #category : 'initialization' }
 TTPuzzlePresenter >> size: aSizeInPieces [
 	size := aSizeInPieces.
 	self resetPieces.
-]
-
-{ #category : 'initialization' }
-TTPuzzlePresenter >> updateModel [
-	puzzle element: nil.
-	puzzle element: background.
 ]
