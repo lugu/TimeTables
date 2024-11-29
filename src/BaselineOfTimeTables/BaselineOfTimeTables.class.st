@@ -7,14 +7,19 @@ Class {
 
 { #category : 'baselines' }
 BaselineOfTimeTables >> baseline: spec [
-    <baseline>
 
-    spec for: #common do: [	
-				
-        "Packages"
-        spec
-            package: 'TimeTables';
-            package: 'TimeTables-UI' with: [ spec requires: #('TimeTables') ];
-	         package: 'TimeTables-Tests' with: [ spec requires: #('TimeTables' 'TimeTables-UI') ] ].
+	spec for: #common do: [
+		"Dependencies"
+		spec baseline: 'SpecToplo' with: [
+				spec repository: 'github://pharo-graphics/Spec-Toplo:dev/src' ].
 
+		"Packages"
+		spec			
+			package: 'TimeTables';
+			package: 'TimeTables-Tests'	with: [ spec requires: #( 'TimeTables') ];
+			package: 'TimeTables-BlocSpec' with: [ spec requires: #( 'SpecToplo') ];
+			package: 'TimeTables-BlocSpec-Tests' with: [ spec requires: #( 'TimeTables-BlocSpec') ];
+			package: 'TimeTables-UI-Tests'	with: [ spec requires: #( 'TimeTables-UI') ];
+			package: 'TimeTables-UI' with: [ spec requires: #( 'TimeTables' ) ]
+	]
 ]
