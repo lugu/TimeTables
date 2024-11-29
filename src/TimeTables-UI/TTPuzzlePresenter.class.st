@@ -7,18 +7,30 @@ Class {
 	#instVars : [
 		'background',
 		'pieces',
+		'form',
+		'size',
 		'puzzle'
 	],
 	#category : 'TimeTables-UI',
 	#package : 'TimeTables-UI'
 }
 
+{ #category : 'initialization' }
+TTPuzzlePresenter >> addOnePiece [
+
+	| randomPiece |
+	(pieces anySatisfy: [ :each | each background isTransparent ])
+		ifFalse: [ ^ self ].
+	randomPiece := (pieces select: [ :each |
+		                each background isTransparent ]) atRandom.
+	randomPiece background: Color random.
+	self updateModel
+]
+
 { #category : 'accessing' }
 TTPuzzlePresenter >> background: aForm [
-	background := BlElement new
-		background: (BlImageBackground new image: aForm).
-	background addChildren: pieces.
-	puzzle element: background.
+	form := aForm.
+	self resetBackground.
 ]
 
 { #category : 'initialization' }
@@ -34,10 +46,22 @@ TTPuzzlePresenter >> defaultLayout [
 ]
 
 { #category : 'initialization' }
+TTPuzzlePresenter >> defaultSize [
+	^ 4 @ 4
+]
+
+{ #category : 'initialization' }
+TTPuzzlePresenter >> initialize [
+	size := self defaultSize.
+	form := self defaultBackgroundForm.
+	super initialize.
+]
+
+{ #category : 'initialization' }
 TTPuzzlePresenter >> initializePresenters [
 	puzzle := self instantiate: TTBlElementPresenter.
-	pieces := 10 timesCollect: [ self makePiece ].
-	self background: self defaultBackgroundForm.
+	self resetBackground.
+	self resetPieces.
 ]
 
 { #category : 'initialization' }
@@ -49,19 +73,60 @@ TTPuzzlePresenter >> initializeWindow: aWindowPresenter [
 TTPuzzlePresenter >> makePiece [
 	^ BlElement new
 		background: Color random;
-		size: 100@100;
-		geometry: BlRectangleGeometry new;
-		position: 100 atRandom @ 100 atRandom
+		size: self pieceSize;
+		geometry: BlRectangleGeometry new
 ]
 
 { #category : 'initialization' }
 TTPuzzlePresenter >> numberOfPieces [
-	^ pieces size.
+	^ (pieces reject: [ :each | each background isTransparent ]) size
+]
+
+{ #category : 'initialization' }
+TTPuzzlePresenter >> pieceSize [
+	^ form extent / size.
 ]
 
 { #category : 'initialization' }
 TTPuzzlePresenter >> removeOnePiece [
-	pieces isEmpty ifTrue: [ ^self ].
-	background removeChild: pieces last.
-	pieces := pieces allButLast
+
+	| randomPiece |
+	(pieces noneSatisfy: [ :each | each background isTransparent not ])
+		ifTrue: [ ^ self ].
+	randomPiece := (pieces reject: [ :each |
+		                each background isTransparent ]) atRandom.
+	randomPiece background: Color transparent.
+	self updateModel
+]
+
+{ #category : 'accessing' }
+TTPuzzlePresenter >> resetBackground [
+	background := BlElement new
+		background: (BlImageBackground new image: form);
+		layout: BlFlowLayout new;
+		size: form extent.
+	pieces ifNotNil: [ background addChildren: pieces].
+	self updateModel.
+]
+
+{ #category : 'initialization' }
+TTPuzzlePresenter >> resetPieces [
+	pieces := (size x * size y) timesCollect: [
+			self makePiece
+	].
+	background removeChildren.
+	background addChildren: pieces.
+	self updateModel
+]
+
+{ #category : 'initialization' }
+TTPuzzlePresenter >> size: aSizeInPieces [
+	size := aSizeInPieces.
+	self resetPieces.
+]
+
+{ #category : 'initialization' }
+TTPuzzlePresenter >> updateModel [
+	puzzle element: nil.
+	puzzle element: background.
 ]

@@ -19,6 +19,6 @@ TTAnswerPresenterTest >> testAnswerConnection [
 ]
 
 { #category : 'tests' }
-TTAnswerPresenterTest >> testOpenClose [
+TTAnswerPresenterTest >> testResize [
 	TTAnswerPresenter new open; delete.
 ]

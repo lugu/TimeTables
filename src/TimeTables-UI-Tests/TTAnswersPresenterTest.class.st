@@ -6,7 +6,7 @@ Class {
 }
 
 { #category : 'tests' }
-TTAnswersPresenterTest >> testOpenClose [
+TTAnswersPresenterTest >> testResize [
 	| game ap question answers |
 	game := TTGame tableOf: (0 to: 10) atRandom.
 	ap := TTAnswersPresenter new.
