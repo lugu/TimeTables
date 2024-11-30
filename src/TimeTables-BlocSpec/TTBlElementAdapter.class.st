@@ -3,8 +3,8 @@ Class {
 	#superclass : 'SpToploWidgetAdapter',
 	#traits : 'SpToploTWithContextMenu',
 	#classTraits : 'SpToploTWithContextMenu classTrait',
-	#category : 'TimeTables-BlockSpec-Adapters',
-	#package : 'TimeTables-BlockSpec',
+	#category : 'TimeTables-BlocSpec-Adapters',
+	#package : 'TimeTables-BlocSpec',
 	#tag : 'Adapters'
 }
 

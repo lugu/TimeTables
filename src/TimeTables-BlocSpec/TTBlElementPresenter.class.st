@@ -4,8 +4,8 @@ Class {
 	#instVars : [
 		'#element => ObservableSlot'
 	],
-	#category : 'TimeTables-BlockSpec',
-	#package : 'TimeTables-BlockSpec'
+	#category : 'TimeTables-BlocSpec',
+	#package : 'TimeTables-BlocSpec'
 }
 
 { #category : 'specs' }

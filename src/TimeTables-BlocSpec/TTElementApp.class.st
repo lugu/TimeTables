@@ -4,8 +4,8 @@ I am a spec application to play the time tables game.
 Class {
 	#name : 'TTElementApp',
 	#superclass : 'SpApplication',
-	#category : 'TimeTables-BlockSpec',
-	#package : 'TimeTables-BlockSpec'
+	#category : 'TimeTables-BlocSpec',
+	#package : 'TimeTables-BlocSpec'
 }
 
 { #category : 'initialization' }

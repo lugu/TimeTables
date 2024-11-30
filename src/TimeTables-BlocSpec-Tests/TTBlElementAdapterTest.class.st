@@ -1,8 +1,8 @@
 Class {
 	#name : 'TTBlElementAdapterTest',
 	#superclass : 'SpAbstractWidgetAdapterTest',
-	#category : 'TimeTables-BlockSpec-Tests',
-	#package : 'TimeTables-BlockSpec-Tests'
+	#category : 'TimeTables-BlocSpec-Tests',
+	#package : 'TimeTables-BlocSpec-Tests'
 }
 
 { #category : 'accessing' }
