@@ -7,6 +7,7 @@ Class {
 
 { #category : 'baselines' }
 BaselineOfTimeTables >> baseline: spec [
+  <baseline>
 
 	spec for: #common do: [
 		"Dependencies"
