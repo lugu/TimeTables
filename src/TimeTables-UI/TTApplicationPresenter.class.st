@@ -1,3 +1,6 @@
+"
+I am a presenter which wraps a TTGamePresenter. Once the game is terminated, I create a new TTGamePresenter.
+"
 Class {
 	#name : 'TTApplicationPresenter',
 	#superclass : 'SpPresenter',

@@ -19,7 +19,7 @@ TTAnswerPresenter >> button [
 { #category : 'layout' }
 TTAnswerPresenter >> defaultLayout [
 	^ SpBoxLayout newLeftToRight
-		add: answer;
+		add: answer expand: true;
 		yourself
 ]
 

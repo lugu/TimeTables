@@ -37,7 +37,7 @@ TTGamePresenter >> connectPresenters [
 TTGamePresenter >> defaultLayout [
 	^ SpBoxLayout newLeftToRight
 		add: question;
-		add: puzzle;
+		add: puzzle expand: true;
 		yourself
 ]
 

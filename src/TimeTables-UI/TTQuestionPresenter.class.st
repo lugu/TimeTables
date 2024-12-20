@@ -16,7 +16,7 @@ Class {
 TTQuestionPresenter >> defaultLayout [
 	^ SpBoxLayout newTopToBottom
 		add: question;
-		add: answers expand: false;
+		add: answers expand: true;
 		yourself
 ]
 

@@ -15,7 +15,7 @@ Class {
 TTAnswersPresenter >> defaultLayout [
 	| spLayout |
 	spLayout := SpBoxLayout newLeftToRight.
-	answers do: [ :a | spLayout add: a ].
+	answers do: [ :a | spLayout add: a expand: true].
 	^ spLayout
 ]
 
