@@ -2,19 +2,19 @@
 I am a spec application to play the time tables game.
 "
 Class {
-	#name : 'TTGameApplication',
+	#name : 'TTApplication',
 	#superclass : 'SpApplication',
 	#category : 'TimeTables-UI',
 	#package : 'TimeTables-UI'
 }
 
 { #category : 'initialization' }
-TTGameApplication >> initialize [ 
+TTApplication >> initialize [ 
 	super initialize.
 	self useBackend: #Toplo
 ]
 
 { #category : 'running' }
-TTGameApplication >> start [
-	(TTGamePresenter newApplication: self) open
+TTApplication >> start [
+	(TTApplicationPresenter newApplication: self) open
 ]

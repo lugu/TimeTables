@@ -6,17 +6,13 @@ Class {
 	#superclass : 'SpPresenter',
 	#instVars : [
 		'question',
-		'game'
+		'game',
+		'puzzle',
+		'onFinishBlock'
 	],
 	#category : 'TimeTables-UI',
 	#package : 'TimeTables-UI'
 }
-
-{ #category : 'initialization' }
-TTGamePresenter class >> tableOf: aNumber [
-	^ self basicNew initialize: (TTGame tableOf: aNumber)	
-	
-]
 
 { #category : 'accessing' }
 TTGamePresenter >> congratulationScreen [
@@ -24,8 +20,8 @@ TTGamePresenter >> congratulationScreen [
 	self layout remove: question.
 	alert := self instantiate: 	TTAlertPresenter.
 	alert 	textMessage: 'Congratulation' buttonLabel: 'Restart!' action: [
-			self layout remove: alert.
-			self nextGame.
+			onFinishBlock
+				ifNotNil: [ onFinishBlock value ].
 	].
 	self layout add: alert.
 	^ self
@@ -39,51 +35,20 @@ TTGamePresenter >> connectPresenters [
 
 { #category : 'layout' }
 TTGamePresenter >> defaultLayout [
-	^ SpBoxLayout newTopToBottom
+	^ SpBoxLayout newLeftToRight
 		add: question;
+		add: puzzle;
 		yourself
 ]
 
-{ #category : 'accessing' }
-TTGamePresenter >> game: aGame [
-
-	game := aGame.
-]
-
 { #category : 'initialization' }
-TTGamePresenter >> initialize [
-	game ifNil: [ self newGame ].
-	super initialize.
-]
-
-{ #category : 'accessing' }
-TTGamePresenter >> initialize: aGame [
-	self game: aGame; initialize.
-]
-
-{ #category : 'initialization - deprecated' }
 TTGamePresenter >> initializePresenters [
+	game := TTGame size: 16.
 	question := self instantiate: TTQuestionPresenter.
+	puzzle := self instantiate: TTPuzzlePresenter.
 	self focusOrder
-		add: question.
-]
-
-{ #category : 'initialization' }
-TTGamePresenter >> initializeWindow: aWindowPresenter [
-	aWindowPresenter title: 'Time tables'.
-]
-
-{ #category : 'initialization' }
-TTGamePresenter >> newGame [
-	game :=  TTGame tableOf: (1 to: 9) atRandom.
-]
-
-{ #category : 'initialization' }
-TTGamePresenter >> nextGame [
-	self newGame.
-	self initializePresenters.
-	self layout add: question.
-	self nextQuestion.
+		add: question;
+		add: puzzle.
 ]
 
 { #category : 'accessing' }
@@ -95,9 +60,15 @@ TTGamePresenter >> nextQuestion [
 		multiplication := game openQuestions atRandom.
 		question setQuestion: multiplication.
 		question onResponse: [ :answer |
-			game respondTo: multiplication with: answer.
+			(game respondTo: multiplication with: answer) ifTrue: [ puzzle removeOnePiece ].
 			self nextQuestion
 		].
-	]
+	].
+	^ self
 
+]
+
+{ #category : 'initialization' }
+TTGamePresenter >> onFinishedDo: aBlock [
+	onFinishBlock := aBlock
 ]

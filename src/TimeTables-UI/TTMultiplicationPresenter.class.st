@@ -29,11 +29,6 @@ TTMultiplicationPresenter >> initializePresenters [
 		add: question.
 ]
 
-{ #category : 'initialization' }
-TTMultiplicationPresenter >> initializeWindow: aWindowPresenter [
-	aWindowPresenter title: 'Multiplication question'
-]
-
 { #category : 'transmission' }
 TTMultiplicationPresenter >> setModel: aMultiplication [
 	question label: aMultiplication problemStatement.

@@ -27,11 +27,6 @@ TTMultiplicationVisualPresenter >> initializePresenters [
 ]
 
 { #category : 'initialization' }
-TTMultiplicationVisualPresenter >> initializeWindow: aWindowPresenter [
-	aWindowPresenter title: 'Multiplication visualization'
-]
-
-{ #category : 'initialization' }
 TTMultiplicationVisualPresenter >> visualFor: x by: y [
 	| color diameter size childElements |
 	color := Color random.

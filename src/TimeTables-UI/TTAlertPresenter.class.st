@@ -27,11 +27,6 @@ TTAlertPresenter >> initializePresenters [
 ]
 
 { #category : 'initialization' }
-TTAlertPresenter >> initializeWindow: aWindowPresenter [
-	aWindowPresenter title: 'Alert'.
-]
-
-{ #category : 'initialization' }
 TTAlertPresenter >> textMessage: text buttonLabel: btnLabel action: aBlock [
 	label label: text.
 	button action: [ aBlock value ].

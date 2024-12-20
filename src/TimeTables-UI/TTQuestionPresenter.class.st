@@ -29,11 +29,6 @@ TTQuestionPresenter >> initializePresenters [
 		add: answers.
 ]
 
-{ #category : 'initialization' }
-TTQuestionPresenter >> initializeWindow: aWindowPresenter [
-	aWindowPresenter title: 'Question'
-]
-
 { #category : 'transmission' }
 TTQuestionPresenter >> onResponse: aBlockAcceptingAnAnswer [
 	answers onResponse: aBlockAcceptingAnAnswer

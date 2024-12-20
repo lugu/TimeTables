@@ -18,6 +18,19 @@ TTGame class >> numberOfAnswers [
 ]
 
 { #category : 'initialization' }
+TTGame class >> size: questionNb [
+	| questions |
+	questions := Set new.
+	[ questions size = questionNb ] whileFalse: [
+		| a b |
+		a := (1 to: 10) atRandom.
+		b := (1 to: 10) atRandom.
+		questions add: (TTMultiplication new x: a; y: b).
+	].
+	^ self new questions: questions
+]
+
+{ #category : 'initialization' }
 TTGame class >> tableOf: aNumber [
 	^ self new questions: (TTTable ofNumber: aNumber) questions shuffle.
 ]
@@ -50,6 +63,7 @@ TTGame >> questions: someQuestions [
 ]
 
 { #category : 'accessing' }
-TTGame >> respondTo: aQuestion with: anAnswer [
-	questions at: aQuestion put: (aQuestion response: anAnswer)
+TTGame >> respondTo: aQuestion with: anAnswer [ 
+	questions at: aQuestion put: (aQuestion response: anAnswer).
+	^ questions at: aQuestion.
 ]

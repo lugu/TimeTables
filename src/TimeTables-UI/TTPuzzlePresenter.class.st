@@ -64,11 +64,6 @@ TTPuzzlePresenter >> initializePresenters [
 ]
 
 { #category : 'initialization' }
-TTPuzzlePresenter >> initializeWindow: aWindowPresenter [
-	aWindowPresenter title: 'Puzzle'
-]
-
-{ #category : 'initialization' }
 TTPuzzlePresenter >> makePiece [
 	^ BlElement new
 		background: Color random;

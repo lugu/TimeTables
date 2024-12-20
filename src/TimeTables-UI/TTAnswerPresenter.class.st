@@ -29,11 +29,6 @@ TTAnswerPresenter >> initializePresenters [
 ]
 
 { #category : 'initialization' }
-TTAnswerPresenter >> initializeWindow: aWindowPresenter [
-	aWindowPresenter title: 'Answer'.
-]
-
-{ #category : 'initialization' }
 TTAnswerPresenter >> onResponse: aBlockAcceptingAnAnswer [
 	answer action: [ aBlockAcceptingAnAnswer value: self model ].
 ]

@@ -27,11 +27,6 @@ TTAnswersPresenter >> initializePresenters [
 	answers do: [ :a | self focusOrder add: a ]
 ]
 
-{ #category : 'initialization' }
-TTAnswersPresenter >> initializeWindow: aWindowPresenter [
-	aWindowPresenter title: 'Answers'.
-]
-
 { #category : 'transmission' }
 TTAnswersPresenter >> onResponse: aBlockAcceptingAnAnswer [
 	answers do: [ :answer | answer onResponse: aBlockAcceptingAnAnswer ].
